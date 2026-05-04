@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepcare - History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/history.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Deepcare</div>
+        <nav>
+            <ul>
+                <li onclick="location.href='main.html'"><img src="../images/home-icon.png" alt="Home"><span>Home</span></li>
+                <li onclick="location.href='chat.html'"><img src="../images/chat-icon.png" alt="Chat"><span>Chat</span></li>
+                <li class="active"><img src="../images/history-icon.png" alt="History"><span>History</span></li>
+                 <li onclick="location.href='doctors.html'"><img src="../images/doctors-icon.png" alt="Doctors"><span>Doctors</span></li>
+                 <li onclick="location.href='products.html'"><img src="../images/products-icon.png" alt="Products"><span>Products</span></li>
+                 <li onclick="location.href='profile.html'"><img src="../images/profile-icon.png" alt="Profile"><span>Profile</span></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="history-container">
+        <!-- Floating background circles -->
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+
+        <h1 class="history-title">History</h1>
+
+        <div class="glass-frame">
+            <div class="history-list">
+                <!-- Record 1 -->
+                <div class="history-item">
+                    <div class="item-left">
+                        <div class="avatar-bg">
+                            <img src="../images/ai-man.png" alt="User Icon" class="ai-man-icon">
+                        </div>
+                        <div class="date-info">
+                            <p class="date">May 30, 2026</p>
+                            <p class="time">10:30 AM</p>
+                        </div>
+                    </div>
+                    <div class="score good">
+                        <span class="value">83</span>
+                        <span class="status">Good</span>
+                    </div>
+                </div>
+
+                <!-- Record 2 -->
+                <div class="history-item">
+                    <div class="item-left">
+                        <div class="avatar-bg">
+                            <img src="../images/ai-man.png" alt="User Icon" class="ai-man-icon">
+                        </div>
+                        <div class="date-info">
+                            <p class="date">May 30, 2026</p>
+                            <p class="time">10:30 AM</p>
+                        </div>
+                    </div>
+                    <div class="score good">
+                        <span class="value">82</span>
+                        <span class="status">Good</span>
+                    </div>
+                </div>
+
+                <!-- Record 3 (Bad Score) -->
+                <div class="history-item">
+                    <div class="item-left">
+                        <div class="avatar-bg">
+                            <img src="../images/ai-man.png" alt="User Icon" class="ai-man-icon">
+                        </div>
+                        <div class="date-info">
+                            <p class="date">May 30, 2026</p>
+                            <p class="time">10:30 AM</p>
+                        </div>
+                    </div>
+                    <div class="score bad">
+                        <span class="value">70</span>
+                        <span class="status">Bad</span>
+                    </div>
+                </div>
+
+                <!-- Record 4 -->
+                <div class="history-item">
+                    <div class="item-left">
+                        <div class="avatar-bg">
+                            <img src="../images/ai-man.png" alt="User Icon" class="ai-man-icon">
+                        </div>
+                        <div class="date-info">
+                            <p class="date">May 30, 2026</p>
+                            <p class="time">10:30 AM</p>
+                        </div>
+                    </div>
+                    <div class="score bad">
+                        <span class="value">68</span>
+                        <span class="status">Bad</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<script src="../js/history.js"></script>
+</body>
+</html>

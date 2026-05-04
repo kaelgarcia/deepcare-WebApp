@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepcare - Skin Profile Assessment</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Separate CSS for Assessment -->
+    <link rel="stylesheet" href="../css/assessment.css">
+</head>
+<body class="assessment-body">
+    <!-- Decorative Background Circles -->
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+
+    <main class="assessment-container">
+        <div class="glass-card assessment-card">
+            <!-- Form Header -->
+            <header class="form-header">
+                <h1>Deepcare Skin Profile Assessment</h1>
+                <p>Fill in the following fields so that we can properly assess your skin</p>
+            </header>
+
+            <form id="skinForm" class="scrollable-form">
+                <!-- Section 1: Personal Details -->
+                <div class="form-section">
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="fullName">Username</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Your answer" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" placeholder="Your answer">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="gender">Gender</label>
+                        <input type="text" id="gender" name="gender" placeholder="Your answer">
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <!-- Section 2: Skin Type -->
+                <div class="form-section">
+                    <label class="section-q">How would you describe your skin type?</label>
+                    <div class="checkbox-grid">
+                        <label class="cb-container">
+                            <input type="checkbox" name="skinType" value="Oily">
+                            <span>Oily</span>
+                        </label>
+                        <label class="cb-container">
+                            <input type="checkbox" name="skinType" value="Normal">
+                            <span>Normal</span>
+                        </label>
+                        <label class="cb-container">
+                            <input type="checkbox" name="skinType" value="Dry">
+                            <span>Dry</span>
+                        </label>
+                        <label class="cb-container">
+                            <input type="checkbox" name="skinType" value="Sensitive">
+                            <span>Sensitive</span>
+                        </label>
+                        <label class="cb-container">
+                            <input type="checkbox" name="skinType" value="Combination">
+                            <span>Combination</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Section 3: Daily Feel -->
+                <div class="form-section">
+                    <label class="section-q">How does your skin usually feel at the end of the day?</label>
+                    <div class="checkbox-grid">
+                        <label class="cb-container">
+                            <input type="checkbox" name="skinFeel" value="Oily/Shiny">
+                            <span>Oily/Shiny</span>
+                        </label>
+                        <label class="cb-container">
+                            <input type="checkbox" name="skinFeel" value="Tight/Dry">
+                            <span>Tight/Dry</span>
+                        </label>
+                        <label class="cb-container">
+                            <input type="checkbox" name="skinFeel" value="Balanced">
+                            <span>Balanced</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Section 4: Concerns -->
+                <div class="form-section">
+                    <label class="section-q">Main skin concerns?</label>
+                    <div class="checkbox-grid">
+                        <label class="cb-container">
+                            <input type="checkbox" name="concerns" value="Acne">
+                            <span>Acne</span>
+                        </label>
+                        <label class="cb-container">
+                            <input type="checkbox" name="concerns" value="Dark spots">
+                            <span>Dark spots</span>
+                        </label>
+                        <label class="cb-container">
+                            <input type="checkbox" name="concerns" value="Wrinkles">
+                            <span>Wrinkles</span>
+                        </label>
+                        <label class="cb-container">
+                            <input type="checkbox" name="concerns" value="Redness">
+                            <span>Redness</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Section 5: Medical/Allergies -->
+                <div class="form-section">
+                    <div class="input-group">
+                        <label for="allergies">Known Allergies (cosmetics, food, etc.)</label>
+                        <input type="text" id="allergies" name="allergies" placeholder="Your answer">
+                    </div>
+                </div>
+
+                <!-- Sticky Footer for Save Button -->
+                <div class="sticky-footer">
+                    <button type="submit" class="btn-stats">Save Assessment</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Separate JS for Assessment Logic -->
+    <script src="../js/assessment.js"></script>
+</body>
+</html>

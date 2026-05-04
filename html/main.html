@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepcare - AI Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Deepcare</div>
+        <nav>
+            <ul>
+                <li class="active"><img src="../images/home-icon.png" alt="Home"><span>Home</span></li>
+                <li onclick="location.href='chat.html'"><img src="../images/chat-icon.png" alt="Chat"><span>Chat</span></li>
+                <li onclick="location.href='history.html'"><img src="../images/history-icon.png" alt="History"><span>History</span></li>
+                <li onclick="location.href='doctors.html'"><img src="../images/doctors-icon.png" alt="Doctors"><span>Doctors</span></li>
+                <li onclick="location.href='main.html'"><img src="../images/products-icon.png" alt="Products"><span>Products</span></li>
+                <li onclick="location.href='profile.html'"><img src="../images/profile-icon.png" alt="Profile"><span>Profile</span></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="hero-section">
+        <div class="hero-content">
+            <h1>Hello, <span id="username">User</span></h1>
+            <p>Discover insights about your face with AI</p>
+            <button class="btn-start">Start Chat</button>
+        </div>
+
+        <div class="hero-visual">
+            <!-- These are the background circles seen in image_0a0f2c.jpg -->
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+            <div class="circle circle-4"></div>
+            
+            <!-- This is the container which is ALSO a floating circle -->
+            <div class="avatar-container float-main">
+                <img src="../images/ai-man.png" alt="AI Man" class="ai-man-img float-man">
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

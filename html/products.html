@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepcare - Products</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/products.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">Deepcare</div>
+        <nav>
+            <ul>
+                <li onclick="location.href='main.html'"><img src="../images/home-icon.png" alt="Home"><span>Home</span></li>
+                <li onclick="location.href='chat.html'"><img src="../images/chat-icon.png" alt="Chat"><span>Chat</span></li>
+                <li onclick="location.href='history.html'"><img src="../images/history-icon.png" alt="History"><span>History</span></li>
+                <li onclick="location.href='doctors.html'"><img src="../images/doctors-icon.png" alt="Doctors"><span>Doctors</span></li>
+                <li class="active"><img src="../images/products-icon.png" alt="Products"><span>Products</span></li>
+                <li onclick="location.href='profile.html'"><img src="../images/profile-icon.png" alt="Profile"><span>Profile</span></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="products-container">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        
+        <h1 class="page-title">Products</h1>
+
+        <div class="glass-frame">
+            <div class="search-section">
+                <div class="search-bar">
+                    <img src="../images/search-icon.png" class="search-icon" alt="Search">
+                    <input type="text" placeholder="Search products...">
+                </div>
+                <!-- Updated to use products-icon.png as requested -->
+                <div class="cart-button" onclick="openCart()">
+                    <img src="../images/products-icon.png" alt="Cart">
+                </div>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../images/cetaphil.png" alt="Cetaphil">
+                    </div>
+                    <div class="product-details">
+                        <p class="price">₱570.00</p>
+                        <h3>Cetaphil - Gentle Skin Cleanser</h3>
+                        <ul class="features">
+                            <li>dry to normal, sensitive skin</li>
+                            <li>Acne-prone skin</li>
+                        </ul>
+                        <p class="description">A soap-free cleanser that removes dirt and impurities without stripping the skin barrier.</p>
+                    </div>
+                </div>
+
+                <div class="product-card empty"></div>
+                <div class="product-card empty"></div>
+                <div class="product-card empty"></div>
+            </div>
+        </div>
+    </main>
+    <script src="../js/products.js"></script>
+</body>
+</html>

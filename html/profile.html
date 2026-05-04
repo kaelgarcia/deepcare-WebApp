@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepcare - Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">Deepcare</div>
+        <nav>
+            <ul>
+                <li onclick="location.href='main.html'"><img src="../images/home-icon.png"><span>Home</span></li>
+                <li onclick="location.href='chat.html'"><img src="../images/chat-icon.png"><span>Chat</span></li>
+                <li onclick="location.href='history.html'"><img src="../images/history-icon.png"><span>History</span></li>
+                <li onclick="location.href='doctors.html'"><img src="../images/doctors-icon.png"><span>Doctors</span></li>
+                <li onclick="location.href='products.html'"><img src="../images/products-icon.png"><span>Products</span></li>
+                <li class="active"><img src="../images/profile-icon.png"><span>Profile</span></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="circle c3"></div>
+        
+        <h1 class="page-title">Profile</h1>
+
+        <div class="glass-card profile-card">
+            <h2 class="card-brand">Deepcare</h2>
+            
+            <div class="user-header">
+                <img src="../images/ai-man.png" alt="Profile Avatar" class="avatar">
+                <div class="user-main-info">
+                    <h1 id="display-name"><Name of the client></h1>
+                    <p>Email: <span id="display-email">ivorypearl@gmail.com</span></p>
+                    <p>Mobile: <span id="display-mobile">09876543112</span></p>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+           <div class="info-section" id="extra-stats">
+    <!-- JavaScript will populate all info here (Age, Gender, Skin Type, etc.) -->
+    <p>Please complete the assessment to view your profile statistics.</p>
+</div>
+
+            <div class="button-group">
+                <button class="btn btn-stats" onclick="location.href='assessment.html'">Update Statistics</button>
+                <button class="btn btn-logout" onclick="location.href='login.html'">Logout</button>
+            </div>
+        </div>
+    </main>
+    <script src="../js/profile.js"></script>
+</body>
+</html>

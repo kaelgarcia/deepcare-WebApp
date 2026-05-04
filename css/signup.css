@@ -1,0 +1,193 @@
+/* --- Background & Floating Bubbles --- */
+.signup-body {
+    background-color: #f3f5f2; /* Soft off-white base */
+    margin: 0;
+    height: 100vh;
+    overflow: hidden; /* Keeps bubbles from creating scrollbars */
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    position: absolute;
+    background: #a3b19a; /* Sage green from your reference image */
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Precise bubble placement to match image_62ce83.jpg */
+.c1 { width: 420px; height: 420px; left: -120px; top: -80px; opacity: 0.6; }
+.c2 { width: 380px; height: 380px; right: -100px; top: 15%; opacity: 0.7; }
+.c3 { width: 220px; height: 220px; left: 8%; bottom: 5%; opacity: 0.5; }
+.c4 { width: 140px; height: 140px; right: 20%; bottom: 12%; opacity: 0.4; filter: blur(15px); }
+
+/* --- Translucent Glass Card --- */
+.signup-container {
+    width: 95%;
+    max-width: 1050px;
+    z-index: 10;
+    position: relative;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.4); /* Translucent background */
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    border-radius: 45px;
+    padding: 55px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Layout Grid --- */
+.signup-content {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr; /* Splits form and logo */
+    gap: 50px;
+    align-items: center;
+}
+
+.back-arrow {
+    position: absolute;
+    top: 30px;
+    left: 35px;
+    color: #1a1a1a;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+/* --- Form Typography --- */
+.signup-form-area h1 { 
+    font-size: 38px; 
+    font-weight: 800; 
+    color: #4a3f5b; 
+    margin: 0; 
+}
+
+.signup-form-area p { 
+    margin: 5px 0 25px 0; 
+    font-weight: 600; 
+    color: #555; 
+}
+
+/* --- Input Styling --- */
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.input-group {
+    margin-bottom: 12px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 12px;
+    border: none;
+    background: #f1f3f0; /* Soft input color from image_62ce83.jpg */
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Phone Input with Flag */
+.phone-group {
+    display: flex;
+    background: #f1f3f0;
+    border-radius: 12px;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.country-code {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 12px;
+    border-right: 1px solid #ccc;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.country-code img { width: 22px; border-radius: 2px; }
+.phone-group input { background: transparent; }
+
+/* --- Buttons --- */
+.btn-signup {
+    width: 100%;
+    padding: 18px;
+    background: #6d7e63; /* Deepcare Green */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(109, 126, 99, 0.25);
+}
+
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    line-height: 0.1em;
+}
+
+.divider span { 
+    background: #e9ece8; 
+    padding: 0 12px; 
+    color: #888; 
+    font-size: 12px; 
+    font-weight: 600; 
+}
+
+/* --- Google Button Fix (Corrects image_62c327.jpg) --- */
+.btn-google {
+    width: 100%;
+    height: 52px;
+    background: #f1f3f0;
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.btn-google img {
+    width: 20px !important; /* Forces Google logo to stay small */
+    height: 20px !important;
+    object-fit: contain;
+}
+
+/* --- Footer Links --- */
+.footer-text {
+    text-align: center;
+    font-size: 13px !important;
+    margin-top: 20px !important;
+}
+
+.footer-text a {
+    color: #3a86ff;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+/* --- Right Side Logo Text --- */
+.logo-text {
+    font-size: 90px;
+    font-weight: 950;
+    color: #1a1a1a;
+    letter-spacing: -4px;
+    text-align: right;
+    line-height: 1;
+    margin: 0;
+}

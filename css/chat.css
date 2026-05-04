@@ -1,0 +1,172 @@
+/* --- Global Resets --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: #f9faf8;
+    color: #1a1a1a;
+    overflow-x: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Navigation Bar & Hover Effects --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border-radius: 0 0 25px 25px;
+    z-index: 100;
+}
+
+.logo { font-size: 28px; font-weight: 700; }
+
+.navbar ul { display: flex; list-style: none; gap: 40px; }
+
+.navbar li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.navbar li.active { opacity: 1; }
+
+.navbar li:hover { opacity: 1; }
+
+.navbar li:hover span {
+    color: #6d7e63;
+}
+
+.navbar li:hover img {
+    filter: invert(48%) sepia(13%) saturate(635%) hue-rotate(52deg) brightness(92%) contrast(87%);
+    transform: translateY(-2px);
+}
+
+.navbar li img {
+    width: 45px;
+    height: auto;
+    margin-bottom: 4px;
+    transition: all 0.3s ease;
+}
+
+.navbar li span {
+    font-size: 14px;
+    font-weight: 700;
+    color: #5e6d55;
+    transition: color 0.3s ease;
+}
+
+/* --- Floating Animations --- */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- Chat Container & UI --- */
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+}
+
+.chat-window {
+    width: 100%;
+    max-width: 850px;
+    height: 550px;
+    background-color: #6d7e63; /* Based on image_b8a5b4.png */
+    border-radius: 35px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    margin-bottom: 25px;
+    padding: 30px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.input-area {
+    width: 100%;
+    max-width: 850px;
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.upload-btn {
+    flex: 1;
+    background-color: #6d7e63;
+    color: white;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.upload-btn:hover {
+    background-color: #5a6952;
+}
+
+.send-btn {
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 0 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* --- Message Styling --- */
+.message-image {
+    max-width: 400px;
+    border-radius: 20px;
+    align-self: center;
+    border: 5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* --- Solid Floating Bubbles (Consistent with main.html) --- */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: #c2cdbc; /* Solid sage-grey */
+    z-index: 1;
+    animation: float 6s ease-in-out infinite;
+}
+
+.circle-left-top { 
+    width: 160px; height: 160px; left: -60px; top: 40%; 
+    animation-duration: 7s;
+}
+
+.circle-left-bottom { 
+    width: 220px; height: 220px; left: 40px; bottom: -50px; 
+    animation-duration: 9s;
+}
+
+.circle-right-mid { 
+    width: 180px; height: 180px; right: -40px; top: 15%; 
+    animation-duration: 8s; 
+    animation-delay: 1s;
+}

@@ -1,0 +1,143 @@
+/* --- Background & Floating Bubbles --- */
+.assessment-body {
+    background-color: #f9faf8;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden; /* Prevents body scroll so only the card scrolls */
+    font-family: 'Inter', sans-serif;
+}
+
+.circle {
+    position: absolute;
+    background: #cbd5c0; /* Muted sage green */
+    border-radius: 50%;
+    z-index: 1; /* Sits behind the glass card */
+}
+
+/* Positioning bubbles to be seen behind the card */
+.c1 { width: 450px; height: 450px; left: -100px; top: 10%; opacity: 0.5; }
+.c2 { width: 350px; height: 350px; right: -50px; top: 5%; opacity: 0.4; }
+.c3 { width: 200px; height: 200px; left: 15%; bottom: 10%; opacity: 0.3; }
+
+/* --- Translucent Glass Card --- */
+.assessment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: 10;
+    position: relative;
+}
+
+.glass-card {
+    /* Critical: Low alpha (0.45) for translucency */
+    background: rgba(255, 255, 255, 0.10); 
+    /* This creates the frosted glass effect over the bubbles */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    
+    border-radius: 40px;
+    padding: 50px;
+    width: 850px;
+    max-height: 85vh; /* Constraints card height */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Scrollable Form Logic --- */
+.scrollable-form {
+    overflow-y: auto;
+    padding-right: 20px;
+    margin-top: 20px;
+    flex-grow: 1;
+}
+
+/* Custom Scrollbar */
+.scrollable-form::-webkit-scrollbar { width: 8px; }
+.scrollable-form::-webkit-scrollbar-thumb { 
+    background: #c2cdbc; 
+    border-radius: 10px; 
+}
+
+/* --- Form Grids & Inputs --- */
+.input-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 15px 0 25px 0;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.input-group input { 
+    padding: 12px; 
+    border: 1px solid rgba(0,0,0,0.1); 
+    border-radius: 10px; 
+    background: rgba(255, 255, 255, 0.7); 
+}
+
+/* --- Custom Checkboxes (as seen in image_b744fb.png) --- */
+.cb-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cb-container input[type="checkbox"] {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    position: relative;
+    cursor: pointer;
+}
+
+.cb-container input[type="checkbox"]:checked {
+    background-color: #6d7e63;
+    border-color: #6d7e63;
+}
+
+.cb-container input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 14px;
+    left: 4px;
+    top: 0px;
+}
+
+/* --- Save Button --- */
+.btn-stats {
+    background: #6d7e63;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-stats:active { transform: scale(0.98); }
+
+.sticky-footer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    margin-top: 10px;
+}

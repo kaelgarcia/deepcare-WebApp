@@ -1,0 +1,157 @@
+/* --- Global Resets --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f9faf8;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* --- Navigation & Hover --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border-radius: 0 0 25px 25px;
+    position: relative;
+    z-index: 100;
+}
+
+.logo { font-size: 28px; font-weight: 700; }
+.navbar ul { display: flex; list-style: none; gap: 40px; }
+.navbar li { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: 0.3s; opacity: 0.7; }
+.navbar li.active { opacity: 1; }
+.navbar li:hover { opacity: 1; }
+.navbar li:hover span { color: #6d7e63; }
+.navbar li:hover img {
+    filter: invert(48%) sepia(13%) saturate(635%) hue-rotate(52deg) brightness(92%) contrast(87%);
+}
+.navbar li img { width: 45px; height: auto; margin-bottom: 4px; }
+.navbar li span { font-size: 14px; font-weight: 700; color: #5e6d55; }
+
+/* --- History Layout --- */
+.history-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    position: relative;
+}
+
+.history-title {
+    font-size: 56px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+    z-index: 10;
+}
+
+/* --- The Blurred Glass Frame --- */
+.glass-frame {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.4); /* Semi-transparent */
+    backdrop-filter: blur(15px); /* Blurs the background bubbles */
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 40px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 10;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.history-item {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar-bg {
+    width: 65px;
+    height: 65px;
+    background: #f0f0f0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.ai-man-icon {
+    width: 80%;
+    height: auto;
+}
+
+.date-info .date {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+.date-info .time {
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+}
+
+.score {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.score .value {
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.score .status {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.score.good { color: #6d7e63; } /* Matching the brand green */
+.score.bad { color: #b85c5c; } /* Muted red for bad status */
+
+/* --- Floating Bubbles --- */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.circle {
+    position: absolute;
+    background: #c2cdbc;
+    border-radius: 50%;
+    z-index: 1;
+    animation: float 7s ease-in-out infinite;
+}
+
+.circle-1 { width: 300px; height: 300px; right: -50px; top: 10%; }
+.circle-2 { width: 150px; height: 150px; left: -30px; bottom: 10%; animation-delay: 1s; }
+.circle-3 { width: 100px; height: 100px; left: 10%; top: 40%; animation-duration: 5s; }

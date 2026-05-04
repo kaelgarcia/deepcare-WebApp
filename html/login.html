@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepcare - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body class="login-body">
+    <!-- Decorative Bubbles -->
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+
+    <main class="login-container">
+        <div class="glass-card login-card">
+            <div class="login-content">
+                <!-- Left Side: Login Form -->
+                <div class="login-form-area">
+                    <header>
+                        <h1>Login</h1>
+                        <p>Welcome back! Please enter your details.</p>
+                    </header>
+                    
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label>Username</label>
+                            <input type="text" id="username" placeholder="Enter your username" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Password</label>
+                            <input type="password" id="password" placeholder="••••••••" required>
+                        </div>
+                        
+                        <button type="submit" class="btn-login">Sign In</button>
+                        
+                        <div class="divider"><span>or</span></div>
+                        
+                        <button type="button" class="btn-google">
+                            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google">
+                            Sign in with Google
+                        </button>
+                    </header>
+                </div>
+
+                <!-- Right Side: Branding -->
+                <div class="login-logo-area">
+                    <h1 class="big-logo">DEEP<br>CARE</h1>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/login.js"></script>
+</body>
+</html>
