@@ -1,15 +1,23 @@
+// js/main.js
 document.addEventListener('DOMContentLoaded', () => {
-    // Example: Dynamically setting the username
-    const usernameElement = document.getElementById('username');
-    const mockUser = "Kael"; // This could come from a login session later
-    
-    if (usernameElement) {
-        usernameElement.textContent = mockUser;
+    // Redirect to login if not logged in
+    if (!localStorage.getItem('deepcare_logged_in')) {
+        window.location.href = 'login.html';
+        return;
     }
 
-    // Button interaction
+    // Show first name in greeting
+    const firstName = localStorage.getItem('user_first_name') || 
+                      localStorage.getItem('user_fullname') || 
+                      'User';
+    const usernameEl = document.getElementById('username');
+    if (usernameEl) usernameEl.textContent = firstName;
+
+    // Start Chat button
     const chatBtn = document.querySelector('.btn-start');
-    chatBtn.addEventListener('click', () => {
-        alert("Starting AI Chat Session...");
-    });
+    if (chatBtn) {
+        chatBtn.addEventListener('click', () => {
+            window.location.href = 'chat.html';
+        });
+    }
 });
