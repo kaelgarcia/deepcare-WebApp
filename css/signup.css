@@ -163,9 +163,23 @@
 }
 
 .btn-google img {
-    width: 20px !important; /* Forces Google logo to stay small */
+    width: 20px !important;
     height: 20px !important;
     object-fit: contain;
+}
+
+/* --- Google Identity Services button centering --- */
+#g_id_onload,
+.g_id_signin {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.g_id_signin > div {
+    width: 100% !important;
+}
+.g_id_signin iframe {
+    margin: 0 auto !important;
 }
 
 /* --- Footer Links --- */

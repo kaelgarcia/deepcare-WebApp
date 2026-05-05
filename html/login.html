@@ -6,9 +6,10 @@
     <title>Deepcare - Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/login.css">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client"></script>
 </head>
 <body class="login-body">
-    <!-- Decorative Bubbles -->
     <div class="circle c1"></div>
     <div class="circle c2"></div>
     <div class="circle c3"></div>
@@ -25,23 +26,40 @@
                     
                     <form id="loginForm">
                         <div class="input-group">
-                            <label>Username</label>
-                            <input type="text" id="username" placeholder="Enter your username" required>
+                            <label>Username or Email</label>
+                            <input type="text" id="username" placeholder="Enter your username or email" required>
                         </div>
                         <div class="input-group">
                             <label>Password</label>
                             <input type="password" id="password" placeholder="••••••••" required>
                         </div>
-                        
+
+                        <p id="login-error" style="display:none; color:#e74c3c; font-size:0.875rem; margin:6px 0; text-align:center;"></p>
+
                         <button type="submit" class="btn-login">Sign In</button>
                         
                         <div class="divider"><span>or</span></div>
-                        
-                        <button type="button" class="btn-google">
-                            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google">
-                            Sign in with Google
-                        </button>
-                    </header>
+
+                        <!-- Real Google Sign-In Button -->
+                        <div id="g_id_onload"
+                             data-client_id="229801072329-0i37n7n6dashof4ei9meb7cs3vshb37m.apps.googleusercontent.com"
+                             data-callback="handleGoogleLogin"
+                             data-auto_prompt="false">
+                        </div>
+                        <div class="g_id_signin"
+                             data-type="standard"
+                             data-size="large"
+                             data-theme="outline"
+                             data-text="sign_in_with"
+                             data-shape="rectangular"
+                             data-logo_alignment="left"
+                             data-width="100%">
+                        </div>
+
+                        <p class="footer-text" style="text-align:center; margin-top:16px; font-size:0.875rem;">
+                            Don't have an account? <a href="signup.html">Sign Up</a>
+                        </p>
+                    </form>
                 </div>
 
                 <!-- Right Side: Branding -->
