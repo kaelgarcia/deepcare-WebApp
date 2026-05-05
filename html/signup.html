@@ -6,9 +6,10 @@
     <title>Deepcare - Sign Up</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/signup.css">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client"></script>
 </head>
 <body class="signup-body">
-    <!-- Decorative Bubbles -->
     <div class="circle c1"></div>
     <div class="circle c2"></div>
     <div class="circle c3"></div>
@@ -16,7 +17,6 @@
 
     <main class="signup-container">
         <div class="glass-card signup-card">
-            <!-- Back Arrow -->
             <a href="login.html" class="back-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
             </a>
@@ -32,19 +32,23 @@
                     <form id="signupForm">
                         <div class="input-row">
                             <div class="input-group">
-                                <input type="text" placeholder="First Name" required>
+                                <input type="text" id="firstName" placeholder="First Name" required>
                             </div>
                             <div class="input-group">
-                                <input type="text" placeholder="Last Name" required>
+                                <input type="text" id="lastName" placeholder="Last Name" required>
                             </div>
                         </div>
 
                         <div class="input-group">
-                            <input type="email" placeholder="Email" required>
+                            <input type="text" id="username" placeholder="Username" required>
                         </div>
 
                         <div class="input-group">
-                            <input type="password" placeholder="Enter your password" required>
+                            <input type="email" id="email" placeholder="Email" required>
+                        </div>
+
+                        <div class="input-group">
+                            <input type="password" id="password" placeholder="Enter your password" required>
                         </div>
 
                         <div class="input-group phone-group">
@@ -52,21 +56,32 @@
                                 <img src="https://flagcdn.com/w20/ph.png" alt="PH">
                                 <span>+63</span>
                             </div>
-                            <input type="tel" placeholder="Mobile number" required>
+                            <input type="tel" id="phone" placeholder="Mobile number">
                         </div>
+
+                        <p id="signup-error" style="display:none; color:#e74c3c; font-size:0.875rem; margin:6px 0; text-align:center;"></p>
                         
                         <button type="submit" class="btn-signup">Sign up</button>
                         
                         <div class="divider"><span>or</span></div>
-                        
-                       <!-- ... inside your form ... -->
-<button type="button" class="btn-google">
-    <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google">
-    <span>Sign Up With Google</span>
-</button>
-<!-- ... -->
 
-                        <p class="footer-text">
+                        <!-- Real Google Sign-Up Button -->
+                        <div id="g_id_onload"
+                             data-client_id="229801072329-0i37n7n6dashof4ei9meb7cs3vshb37m.apps.googleusercontent.com"
+                             data-callback="handleGoogleLogin"
+                             data-auto_prompt="false">
+                        </div>
+                        <div class="g_id_signin"
+                             data-type="standard"
+                             data-size="large"
+                             data-theme="outline"
+                             data-text="signup_with"
+                             data-shape="rectangular"
+                             data-logo_alignment="left"
+                             data-width="100%">
+                        </div>
+
+                        <p class="footer-text" style="text-align:center; margin-top:12px; font-size:0.875rem;">
                             Already have an account? <a href="login.html">Log In</a>
                         </p>
                     </form>
