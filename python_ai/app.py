@@ -14,43 +14,47 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Load the best model checkpoint
 model = tf.keras.models.load_model(
-    r"D:\wamp64\www\deepcare-WebApp\python_ai\skin_disease_efficientnetb0_updated.keras"
+    r"D:\wamp64\www\deepcare-WebApp\python_ai\best_model.keras"
 )
 
+# Exact class order matching training folder names (alphabetical as Keras sees them)
 classes = [
-    "Acne",
-    "Actinic Keratosis",
-    "Atopic Dermatitis",
-    "Basal Cell Carcinoma",
-    "Benign Keratosis",
-    "Bullous Disease",
-    "Cellulitis / Impetigo",
-    "Eczema",
-    "Exanthems and Drug Eruptions",
-    "Herpes / HPV and other STDs",
-    "Light Diseases and Pigmentation Disorders",
-    "Lupus and Connective Tissue Diseases",
-    "Melanocytic Nevi",
-    "Melanoma / Skin Cancer / Moles",
-    "Poison Ivy / Contact Dermatitis",
-    "Psoriasis",
-    "Rosacea",
-    "Scabies / Lyme Disease / Infestations",
-    "Seborrheic Keratoses and Benign Tumors",
-    "Systemic Disease",
-    "Tinea / Ringworm / Candidiasis / Fungal Infections",
-    "Urticaria / Hives",
-    "Vascular Tumors",
-    "Vasculitis",
-    "Warts / Molluscum / Viral Infections"
+    "Acne",                                       # 0  acne
+    "Actinic Keratosis",                          # 1  actinic-kerastosis
+    "Atopic Dermatitis",                          # 2  atopic-dermatitis
+    "Basal Cell Carcinoma",                       # 3  basal-cell-carcinoma
+    "Benign Keratosis",                           # 4  benign-kerastosis
+    "Bullous Disease",                            # 5  bullous-disease
+    "Cellulitis / Impetigo",                      # 6  cellulitis-impetigo
+    "Eczema",                                     # 7  Eczema
+    "Exanthems and Drug Eruptions",               # 8  Exanthems and Drug Eruptions
+    "Herpes / HPV and other STDs",                # 9  Herpes HPV and other STDs Photos
+    "Light Diseases and Pigmentation Disorders",  # 10 Light Diseases and Disorders of Pigmentation
+    "Lupus and Connective Tissue Diseases",       # 11 Lupus-and-other-connective-tissue
+    "Melanocytic Nevi",                           # 12 melanocytic-nevi
+    "Melanoma / Skin Cancer / Moles",             # 13 melanoma-skin-cancer-and-moles
+    "Poison Ivy / Contact Dermatitis",            # 14 poison-ivy
+    "Psoriasis",                                  # 15 psoriasis-pictures
+    "Rosacea",                                    # 16 rosacea
+    "Scabies / Lyme Disease / Infestations",      # 17 Scabies Lyme Disease and other Infestations
+    "Seborrheic Keratoses and Benign Tumors",     # 18 Seborrheic Keratoses and other Benign Tumors
+    "Systemic Disease",                           # 19 Systemic Disease
+    "Tinea / Ringworm / Candidiasis",             # 20 Tinea Ringworm Candidiasis and other Fungal
+    "Urticaria / Hives",                          # 21 urticaria-hives
+    "Vascular Tumors",                            # 22 vascular-tumors
+    "Vasculitis",                                 # 23 vasculitis-photo
+    "Warts / Molluscum / Viral Infections"        # 24 wart-molluscum-and-other-viral-infections
 ]
 
 CONFIDENCE_THRESHOLD = 50.0
 
+
 @app.get("/")
 def home():
     return {"message": "DeepCare AI Server Running"}
+
 
 @app.get("/model-info")
 def model_info():
@@ -59,6 +63,7 @@ def model_info():
         "num_classes": model.output_shape[-1],
         "classes": classes
     }
+
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
@@ -75,8 +80,9 @@ async def predict(file: UploadFile = File(...)):
     image = image.resize((224, 224))
     img_array = np.array(image, dtype=np.float32)
 
-    # EfficientNet preprocessor — scales pixels to [-1, 1]
-    img_array = img_array / 127.5 - 1.0
+    # Pass raw pixels — the model has built-in preprocessing layers:
+    #   rescaling (÷255) → normalization (ImageNet mean/std) → rescaling_1
+    # DO NOT manually normalize — just pass 0-255 float array
     img_array = np.expand_dims(img_array, axis=0)
 
     prediction = model.predict(img_array)
