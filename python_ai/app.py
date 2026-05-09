@@ -1,23 +1,25 @@
+import os
+
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 import tensorflow as tf
+import keras
 import numpy as np
 import io
+import os
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost", "http://127.0.0.1"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Load the best model checkpoint
-model = tf.keras.models.load_model(
-    r"D:\wamp64\www\deepcare-WebApp\python_ai\best_model.keras"
-)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = keras.models.load_model(os.path.join(BASE_DIR, "best_model_fixed.keras"))
 
 # Exact class order matching training folder names (alphabetical as Keras sees them)
 classes = [

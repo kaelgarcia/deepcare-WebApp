@@ -18,7 +18,13 @@ if (!isset($_FILES['image'])) {
     exit;
 }
 
-$imagePath = $_FILES['image']['tmp_name'];
+$tmpPath  = $_FILES['image']['tmp_name'];
+$mimeType = mime_content_type($tmpPath);
+
+if (!str_starts_with($mimeType, 'image/')) {
+    echo json_encode(['success' => false, 'message' => 'Uploaded file is not an image.']);
+    exit;
+}
 
 $curl = curl_init();
 
@@ -27,13 +33,30 @@ curl_setopt_array($curl, [
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_POST => true,
     CURLOPT_POSTFIELDS => [
-        'file' => new CURLFile($imagePath)
+        'file' => new CURLFile($tmpPath, $mimeType, $_FILES['image']['name'])
     ]
 ]);
 
-$response = curl_exec($curl);
-
+$response  = curl_exec($curl);
+$curlError = curl_error($curl);
+$httpCode  = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 curl_close($curl);
+
+if ($curlError || $response === false) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'Could not reach the AI server. Make sure it is running. Error: ' . $curlError
+    ]);
+    exit;
+}
+
+if ($httpCode !== 200) {
+    echo json_encode([
+        'success' => false,
+        'message' => 'AI server returned an error (HTTP ' . $httpCode . ').'
+    ]);
+    exit;
+}
 
 echo $response;
 ?>
