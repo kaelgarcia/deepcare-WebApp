@@ -1,7 +1,7 @@
 import os, zipfile, json, shutil
 
-MODEL_PATH = r"C:\wamp64\www\deepcare-WebApp\python_ai\best_model.keras"
-OUTPUT_PATH = r"C:\wamp64\www\deepcare-WebApp\python_ai\best_model_fixed.keras"
+MODEL_PATH = r"C:\wamp64\www\deepcare-WebApp\python_ai\skin_disease_efficientnetb0_v2.keras"
+OUTPUT_PATH = r"C:\wamp64\www\deepcare-WebApp\python_ai\skin_disease_efficientnetb0_v2_fixed.keras"
 
 shutil.copy(MODEL_PATH, OUTPUT_PATH)
 
