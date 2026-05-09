@@ -18,10 +18,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# This is the correct working model
-model = tf.keras.models.load_model(
-    r"D:\wamp64\www\deepcare-WebApp\python_ai\skin_disease_efficientnetb0_v2.keras"
-)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = keras.models.load_model(os.path.join(BASE_DIR, "skin_disease_efficientnetb0_v2.keras"))
 
 # Class order — UPDATE after training prints the class order
 # These must match the alphabetical folder order from your dataset
