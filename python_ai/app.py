@@ -1,23 +1,32 @@
+import os
+
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 import tensorflow as tf
+import keras
 import numpy as np
 import io
+import os
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost", "http://127.0.0.1"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+<<<<<<< HEAD
 # This is the correct working model
 model = tf.keras.models.load_model(
     r"D:\wamp64\www\deepcare-WebApp\python_ai\skin_disease_efficientnetb0_v2.keras"
 )
+=======
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model = keras.models.load_model(os.path.join(BASE_DIR, "best_model_fixed.keras"))
+>>>>>>> e4409fa55a68628b42c372a9a729c79ca1f9629e
 
 # Class order — UPDATE after training prints the class order
 # These must match the alphabetical folder order from your dataset
