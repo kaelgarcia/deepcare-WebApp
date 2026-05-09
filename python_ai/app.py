@@ -14,38 +14,39 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load the best model checkpoint
+# This is the correct working model
 model = tf.keras.models.load_model(
-    r"D:\wamp64\www\deepcare-WebApp\python_ai\best_model.keras"
+    r"D:\wamp64\www\deepcare-WebApp\python_ai\skin_disease_efficientnetb0_v2.keras"
 )
 
-# Exact class order matching training folder names (alphabetical as Keras sees them)
+# Class order — UPDATE after training prints the class order
+# These must match the alphabetical folder order from your dataset
 classes = [
-    "Acne",                                       # 0  acne
-    "Actinic Keratosis",                          # 1  actinic-kerastosis
-    "Atopic Dermatitis",                          # 2  atopic-dermatitis
-    "Basal Cell Carcinoma",                       # 3  basal-cell-carcinoma
-    "Benign Keratosis",                           # 4  benign-kerastosis
-    "Bullous Disease",                            # 5  bullous-disease
-    "Cellulitis / Impetigo",                      # 6  cellulitis-impetigo
-    "Eczema",                                     # 7  Eczema
-    "Exanthems and Drug Eruptions",               # 8  Exanthems and Drug Eruptions
-    "Herpes / HPV and other STDs",                # 9  Herpes HPV and other STDs Photos
-    "Light Diseases and Pigmentation Disorders",  # 10 Light Diseases and Disorders of Pigmentation
-    "Lupus and Connective Tissue Diseases",       # 11 Lupus-and-other-connective-tissue
-    "Melanocytic Nevi",                           # 12 melanocytic-nevi
-    "Melanoma / Skin Cancer / Moles",             # 13 melanoma-skin-cancer-and-moles
-    "Poison Ivy / Contact Dermatitis",            # 14 poison-ivy
-    "Psoriasis",                                  # 15 psoriasis-pictures
-    "Rosacea",                                    # 16 rosacea
-    "Scabies / Lyme Disease / Infestations",      # 17 Scabies Lyme Disease and other Infestations
-    "Seborrheic Keratoses and Benign Tumors",     # 18 Seborrheic Keratoses and other Benign Tumors
-    "Systemic Disease",                           # 19 Systemic Disease
-    "Tinea / Ringworm / Candidiasis",             # 20 Tinea Ringworm Candidiasis and other Fungal
-    "Urticaria / Hives",                          # 21 urticaria-hives
-    "Vascular Tumors",                            # 22 vascular-tumors
-    "Vasculitis",                                 # 23 vasculitis-photo
-    "Warts / Molluscum / Viral Infections"        # 24 wart-molluscum-and-other-viral-infections
+    "Acne",                                       # 0
+    "Actinic Keratosis",                          # 1
+    "Atopic Dermatitis",                          # 2
+    "Basal Cell Carcinoma",                       # 3
+    "Benign Keratosis",                           # 4
+    "Bullous Disease",                            # 5
+    "Cellulitis / Impetigo",                      # 6
+    "Eczema",                                     # 7
+    "Exanthems and Drug Eruptions",               # 8
+    "Herpes / HPV and other STDs",                # 9
+    "Light Diseases and Pigmentation Disorders",  # 10
+    "Lupus and Connective Tissue Diseases",       # 11
+    "Melanocytic Nevi",                           # 12
+    "Melanoma / Skin Cancer / Moles",             # 13
+    "Poison Ivy / Contact Dermatitis",            # 14
+    "Psoriasis",                                  # 15
+    "Rosacea",                                    # 16
+    "Scabies / Lyme Disease / Infestations",      # 17
+    "Seborrheic Keratoses and Benign Tumors",     # 18
+    "Systemic Disease",                           # 19
+    "Tinea / Ringworm / Candidiasis",             # 20
+    "Urticaria / Hives",                          # 21
+    "Vascular Tumors",                            # 22
+    "Vasculitis",                                 # 23
+    "Warts / Molluscum / Viral Infections",       # 24
 ]
 
 CONFIDENCE_THRESHOLD = 50.0
@@ -78,14 +79,14 @@ async def predict(file: UploadFile = File(...)):
         return {"success": False, "message": "Could not read image."}
 
     image = image.resize((224, 224))
-    img_array = np.array(image, dtype=np.float32)
 
-    # Pass raw pixels — the model has built-in preprocessing layers:
-    #   rescaling (÷255) → normalization (ImageNet mean/std) → rescaling_1
-    # DO NOT manually normalize — just pass 0-255 float array
+    # Pass RAW pixels (0-255) — model handles all preprocessing internally
+    # rescaling (÷255) → normalization (fitted ImageNet stats) → rescaling_1
+    # DO NOT manually normalize
+    img_array = np.array(image, dtype=np.float32)
     img_array = np.expand_dims(img_array, axis=0)
 
-    prediction = model.predict(img_array)
+    prediction = model.predict(img_array, verbose=0)
     predicted_index = int(np.argmax(prediction))
     confidence = float(np.max(prediction)) * 100
 
@@ -103,6 +104,9 @@ async def predict(file: UploadFile = File(...)):
     }
 
     if confidence < CONFIDENCE_THRESHOLD:
-        response["warning"] = "Low confidence. Please upload a clearer, closer photo of the affected skin area."
+        response["warning"] = (
+            "Low confidence. Please upload a clearer, "
+            "closer photo of the affected skin area."
+        )
 
     return response
